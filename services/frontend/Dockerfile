@@ -35,3 +35,7 @@ COPY . .
 # ENV PORT 3000
 
 # CMD ["npm", "start"]
+
+##TODO
+# 1. dev/prod/runner 분리
+# 2. docker-compose 에서 상황별 처리 할 수 있도록 정리
