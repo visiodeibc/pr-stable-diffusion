@@ -20,6 +20,7 @@ Attempt of full stack project #2
 
 ## Reference / Template
 - frontEnd : [dockerizing frontend](https://geshan.com.np/blog/2023/01/nextjs-docker/)
+- react/fastapi : [link](https://christophergs.com/tutorials/ultimate-fastapi-tutorial-pt-12-react-js-frontend/)
 
 ## Command
 - build
