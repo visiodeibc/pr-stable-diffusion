@@ -6,6 +6,7 @@ Attempt of full stack project #2
 ## Tech Stack
 - Nextjs
   - tailwindcss
+  - react-query
 - Fastapi
 - Stable diffusion
 
@@ -16,3 +17,6 @@ Attempt of full stack project #2
 3. process and download image [stable diffusion or something fancy]
 4. display on website
 
+
+## Reference / Template
+- frontEnd : [dockerizing frontend](https://geshan.com.np/blog/2023/01/nextjs-docker/)

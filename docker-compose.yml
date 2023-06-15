@@ -1,0 +1,13 @@
+version: '1'
+
+services:
+  frontend:
+    build: ./services/frontend/
+    ports:
+      - 3000:3000
+    command: yarn dev
+    # volumes:
+    #   - ./services/frontend/:/app
+    #   - /app/node_modules
+    environment:
+      NODE_ENV: development
