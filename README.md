@@ -1,4 +1,4 @@
-# stable_diffusion
+# Stable Diffusion Something
 20230615
 
 Attempt of full stack project #2
@@ -13,6 +13,6 @@ Attempt of full stack project #2
 ## Todo
 1. make blank nextjs page
 2. upload image
-3. process and download image
+3. process and download image [stable diffusion or something fancy]
 4. display on website
 
