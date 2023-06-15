@@ -1,15 +1,13 @@
-FROM node:18-alpine AS deps
-RUN apk add --no-cache libc6-compat
+FROM node:18-alpine
 WORKDIR /app
-
-COPY package.json package-lock.json ./
-RUN  yarn --production
-
+COPY . .
+COPY package.json .
+COPY package-lock.json .
+RUN  yarn 
 
 # FROM node:18-alpine AS builder
 # WORKDIR /app
 # COPY --from=deps /app/node_modules ./node_modules
-COPY . .
 
 # ENV NEXT_TELEMETRY_DISABLED 1
 
