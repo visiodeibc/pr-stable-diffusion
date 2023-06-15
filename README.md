@@ -20,3 +20,7 @@ Attempt of full stack project #2
 
 ## Reference / Template
 - frontEnd : [dockerizing frontend](https://geshan.com.np/blog/2023/01/nextjs-docker/)
+
+## Command
+- build
+`docker-compose up -d --build`

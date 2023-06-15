@@ -13,5 +13,3 @@ services:
       NODE_ENV: development
 
 
-#TODO
-#  frontend volume mount할 수 있도록 하기
