@@ -33,17 +33,6 @@ export default function Example() {
         >
           Contained
         </Button>
-        <Box
-          sx={{
-            color: "text.primary",
-          }}
-          margin={3}
-        >
-          Before
-        </Box>
-        <Box sx={{ color: "text.primary" }} margin={3}>
-          After
-        </Box>
       </Stack>
     </Box>
   );
