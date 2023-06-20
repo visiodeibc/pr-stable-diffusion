@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box, Button, Stack } from "@mui/material";
+import { Box, Button, ButtonBase, Stack, Typography } from "@mui/material";
 
 export default function Example() {
   return (
@@ -10,30 +10,42 @@ export default function Example() {
         justifyContent: "center",
         alignItems: "center",
         display: "flex",
+        "& button": { m: 1 },
       }}
     >
-      <Stack
-        direction="row"
+      <Box
         sx={{
           bgcolor: "background.paper",
+          p: 3,
           boxShadow: 3,
           borderRadius: 2,
-          p: 2,
-          minWidth: 300,
           textAlign: "center",
           justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <Button
-          variant="contained"
+        <Typography variant="h4">Stable Diffusion</Typography>
+        <Stack
+          direction="row"
           sx={{
-            color: "text.primary",
-            bgcolor: "text.secondary",
+            justifyContent: "center",
+            p: 2,
           }}
         >
-          Contained
-        </Button>
-      </Stack>
+          <Button
+            variant="contained"
+            sx={{
+              color: "text.primary",
+            }}
+            color="error"
+          >
+            btn1
+          </Button>
+          <Button variant="contained" sx={{ color: "text.secondary" }}>
+            btn2
+          </Button>
+        </Stack>
+      </Box>
     </Box>
   );
 }
