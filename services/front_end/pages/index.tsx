@@ -1,5 +1,6 @@
-import Image from "next/image";
+import * as React from "react";
 import { useRef, useState } from "react";
+import { Box, Button, Stack, Typography } from "@mui/material";
 
 type IMAGE = {
   url: string;
@@ -19,37 +20,41 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-14">
-      <input
-        accept="image/*"
-        type="file"
-        ref={imageInput}
-        onChange={handleImagesAdded}
-        className="transparent absolute top-0 left-0 w-0 h-0"
-      />
-      <div className="relative w-4/5 items-center text-center my-10">
-        <h1 className="text-4xl font-mono">Stable Diffusion</h1>
-        <div className="flex justify-evenly py-6">
-          <div
-            className="box-border border-dotted border-4 p-4 mx-2 border-indigo-600 text-indigo-600"
-            onClick={() => imageInput?.current?.click()}
-          >
-            Before
-          </div>
-          <div
-            className="box-border border-dotted border-4 p-4 mx-2 border-indigo-600 text-indigo-600"
-            onClick={() => {
-              console.log("after clicked");
-            }}
-          >
-            After
-          </div>{" "}
-        </div>
-        <button className="rounded-full bg-blue-400 p-3">Upload</button>
-        <h1 className="text-m mt-4 font-mono">
-          maybe something from backend...
-        </h1>
-      </div>
-    </main>
+    <Box
+      sx={{
+        flex: 1,
+        height: "100vh",
+        justifyContent: "center",
+        alignItems: "center",
+        display: "flex",
+        "& button": { m: 1 },
+      }}
+    >
+      <Box
+        sx={{
+          bgcolor: "background.paper",
+          p: 3,
+          boxShadow: 3,
+          borderRadius: 2,
+          textAlign: "center",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="h4">Stable Diffusion</Typography>
+        <Stack
+          direction="row"
+          sx={{
+            justifyContent: "center",
+            p: 2,
+          }}
+        >
+          <Button variant="contained" color="error">
+            btn1
+          </Button>
+          <Button variant="contained">btn2</Button>
+        </Stack>
+      </Box>
+    </Box>
   );
 }
