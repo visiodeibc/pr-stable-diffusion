@@ -1,6 +1,13 @@
 import * as React from "react";
 import { useRef, useState } from "react";
-import { Box, Button, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  ButtonBase,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
 
 type IMAGE = {
   url: string;
@@ -9,9 +16,12 @@ type IMAGE = {
 
 export default function Home() {
   const imageInput = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const [img, setImg] = useState<IMAGE>();
 
   const handleImagesAdded = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log("hello");
+
     const imagesUploaded = event.target.files as FileList;
     setImg({
       url: URL.createObjectURL(imagesUploaded[0]),
@@ -30,18 +40,24 @@ export default function Home() {
         "& button": { m: 1 },
       }}
     >
-      <Box
+      <input
+        type="file"
+        accept="image/*"
+        ref={inputRef}
+        onChange={handleImagesAdded}
+        style={{ display: "none" }}
+      />
+      <Paper
+        elevation={3}
         sx={{
-          bgcolor: "background.paper",
           p: 3,
-          boxShadow: 3,
           borderRadius: 2,
           textAlign: "center",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <Typography variant="h4">Stable Diffusion</Typography>
+        <Typography variant="h5">Stable Diffusion</Typography>
         <Stack
           direction="row"
           sx={{
@@ -49,12 +65,40 @@ export default function Home() {
             p: 2,
           }}
         >
-          <Button variant="contained" color="error">
-            btn1
-          </Button>
-          <Button variant="contained">btn2</Button>
+          <ButtonBase
+            sx={{
+              width: "20vh",
+              height: "20vh",
+              border: 2,
+              borderRadius: 5,
+              borderStyle: "dotted",
+              boxShadow: 3,
+            }}
+          >
+            Uploaded Image
+          </ButtonBase>
+          <ButtonBase
+            sx={{
+              width: "20vh",
+              height: "20vh",
+              border: 2,
+              borderRadius: 5,
+              borderStyle: "dotted",
+              boxShadow: 3,
+            }}
+          >
+            Processed Image
+          </ButtonBase>
         </Stack>
-      </Box>
+        <Button
+          variant="contained"
+          onClick={() => {
+            inputRef.current?.click();
+          }}
+        >
+          Upload
+        </Button>
+      </Paper>
     </Box>
   );
 }
