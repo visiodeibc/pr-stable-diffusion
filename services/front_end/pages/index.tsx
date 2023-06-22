@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   ButtonBase,
+  Container,
   Paper,
   Stack,
   Typography,
@@ -29,9 +30,8 @@ export default function Home() {
   };
 
   return (
-    <Box
+    <Container
       sx={{
-        flex: 1,
         height: "100vh",
         justifyContent: "center",
         alignItems: "center",
@@ -101,15 +101,10 @@ export default function Home() {
             Processed Image
           </ButtonBase>
         </Stack>
-        <Button
-          variant="contained"
-          onClick={() => {
-            inputRef.current?.click();
-          }}
-        >
+        <Button variant="contained" onClick={() => inputRef.current?.click()}>
           Upload
         </Button>
       </Paper>
-    </Box>
+    </Container>
   );
 }
