@@ -8,6 +8,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { Image } from "mui-image";
 
 type IMAGE = {
   url: string;
@@ -20,8 +21,6 @@ export default function Home() {
   const [img, setImg] = useState<IMAGE>();
 
   const handleImagesAdded = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("hello");
-
     const imagesUploaded = event.target.files as FileList;
     setImg({
       url: URL.createObjectURL(imagesUploaded[0]),
@@ -74,8 +73,19 @@ export default function Home() {
               borderStyle: "dotted",
               boxShadow: 3,
             }}
+            disabled
           >
-            Uploaded Image
+            {img ? (
+              <Image
+                src={img.url}
+                alt={"uploaded image"}
+                sx={{
+                  borderRadius: 5,
+                }}
+              />
+            ) : (
+              "Uploaded Image"
+            )}
           </ButtonBase>
           <ButtonBase
             sx={{
@@ -86,6 +96,7 @@ export default function Home() {
               borderStyle: "dotted",
               boxShadow: 3,
             }}
+            disabled
           >
             Processed Image
           </ButtonBase>
