@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useRef, useState } from "react";
+import { Image } from "mui-image";
 import {
   Box,
   Button,
@@ -9,7 +10,6 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { Image } from "mui-image";
 
 type IMAGE = {
   url: string;
@@ -64,29 +64,39 @@ export default function Home() {
             p: 2,
           }}
         >
-          <ButtonBase
-            sx={{
-              width: "20vh",
-              height: "20vh",
-              border: 2,
-              borderRadius: 5,
-              borderStyle: "dotted",
-              boxShadow: 3,
-            }}
-            disabled
-          >
-            {img ? (
+          {img ? (
+            <Box
+              sx={{
+                m: 1,
+                width: "20vh",
+                height: "20vh",
+              }}
+            >
               <Image
-                src={img.url}
+                src={img?.url}
                 alt={"uploaded image"}
                 sx={{
                   borderRadius: 5,
+                  boxShadow: 3,
                 }}
               />
-            ) : (
-              "Uploaded Image"
-            )}
-          </ButtonBase>
+            </Box>
+          ) : (
+            <ButtonBase
+              sx={{
+                width: "20vh",
+                height: "20vh",
+                border: 2,
+                borderRadius: 5,
+                borderStyle: "dotted",
+                boxShadow: 3,
+              }}
+              disabled
+            >
+              Uploaded Image
+            </ButtonBase>
+          )}
+
           <ButtonBase
             sx={{
               width: "20vh",
