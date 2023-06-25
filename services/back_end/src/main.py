@@ -41,8 +41,8 @@ tform = transforms.Compose(
 )
 
 
-@app.put("/")
-def imageTransfer(file: UploadFile or None = None):
+@app.put("/imgTransform")
+def imgTransform(file: UploadFile or None = None):
     image_data = file.file.read()
     pil_image = Image.open(BytesIO(image_data))
     inp = tform(pil_image).to(device).unsqueeze(0)
