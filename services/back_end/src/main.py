@@ -12,8 +12,8 @@ from torchvision import transforms
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8080"],
     allow_credentials=True,
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -41,7 +41,7 @@ tform = transforms.Compose(
 )
 
 
-@app.put("/imgTransform")
+@app.post("/imgTransform")
 def imgTransform(file: UploadFile or None = None):
     image_data = file.file.read()
     pil_image = Image.open(BytesIO(image_data))
