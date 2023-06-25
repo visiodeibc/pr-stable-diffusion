@@ -1,5 +1,6 @@
+import base64
 from io import BytesIO
-from fastapi import FastAPI, UploadFile
+from fastapi import FastAPI, Response, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 
 from diffusers import StableDiffusionImageVariationPipeline
@@ -45,6 +46,8 @@ def imageTransfer(file: UploadFile or None = None):
     image_data = file.file.read()
     pil_image = Image.open(BytesIO(image_data))
     inp = tform(pil_image).to(device).unsqueeze(0)
-    result = sd_pipe(inp, guidance_scale=3)
-    result.images[0].save("result.jpg")
-    return result.images[0]
+    result = sd_pipe(inp, guidance_scale=3).images[0]
+    buffer = BytesIO()
+    result.save(buffer, format="JPEG")
+    result = base64.b64encode(buffer.getvalue())
+    return Response(content=result, media_type="image/jpeg")
