@@ -6,6 +6,7 @@ import {
   Box,
   Button,
   ButtonBase,
+  CircularProgress,
   Container,
   Paper,
   Stack,
@@ -20,10 +21,12 @@ type IMAGE = {
 export default function Home() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [img, setImg] = useState<IMAGE>();
-  const [processedImg, setProcessedImg] = useState<IMAGE>();
+  const [processedImg, setProcessedImg] = useState<IMAGE | null>();
+  const [processing, setProcessing] = useState<boolean>(false);
 
   const handleImagesAdded = (event: React.ChangeEvent<HTMLInputElement>) => {
     const imagesUploaded = event.target.files as FileList;
+    setProcessedImg(null);
     setImg({
       url: URL.createObjectURL(imagesUploaded[0]),
       img: imagesUploaded[0],
@@ -31,23 +34,29 @@ export default function Home() {
   };
 
   const submitImage = async () => {
-    console.log("submitting image");
-    const formData = new FormData();
-    if (img) {
-      formData.append("file", img.img);
+    setProcessing(true);
+    try {
+      if (img) {
+        const formData = new FormData();
+        if (img) {
+          formData.append("file", img.img);
+        }
+        const config = {
+          Accept: "application/json",
+          "Content-Type": "multipart/form-data",
+        };
+        const result = await axios({
+          method: "post",
+          url: "http://localhost:5001/imgTransform",
+          data: formData,
+          headers: config,
+          withCredentials: false,
+        });
+        setProcessedImg(result.data);
+      }
+    } finally {
+      setProcessing(false);
     }
-    const config = {
-      Accept: "application/json",
-      "Content-Type": "multipart/form-data",
-    };
-    const result = await axios({
-      method: "post",
-      url: "http://localhost:5001/imgTransform",
-      data: formData,
-      headers: config,
-      withCredentials: false,
-    });
-    setProcessedImg(result.data);
   };
 
   return (
@@ -146,7 +155,7 @@ export default function Home() {
               }}
               disabled
             >
-              Processed Image
+              {processing ? <CircularProgress /> : "Processed Image"}
             </ButtonBase>
           )}
         </Stack>
