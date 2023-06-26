@@ -23,8 +23,7 @@ export default function Home() {
   const [prompt, setPrompt] = useState<string | null>();
   const [processedImg, setProcessedImg] = useState<string | null>();
   const [processing, setProcessing] = useState<boolean>(false);
-  const HF_ACCESS_TOKEN = "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";
-  const inference = new HfInference(HF_ACCESS_TOKEN);
+  const inference = new HfInference(process.env.HUGGING_FACE_TOKEN);
 
   const inputChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setPrompt(event.target.value);
