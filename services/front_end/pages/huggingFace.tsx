@@ -8,6 +8,7 @@ import {
   ButtonBase,
   CircularProgress,
   Container,
+  Link,
   Paper,
   Stack,
   TextField,
@@ -67,9 +68,12 @@ export default function Home() {
       >
         <Paper elevation={3} sx={{ p: 2 }}>
           <Typography variant="h5">Hugginface Inference JS</Typography>
-          <Typography variant="body2">
-            Source : https://huggingface.co/docs/huggingface.js/index
-          </Typography>
+          <Link
+            href="https://huggingface.co/docs/huggingface.js/index"
+            underline="hover"
+          >
+            <Typography variant="body2">Source : huggingface.js</Typography>
+          </Link>
         </Paper>
         <Stack
           sx={{
