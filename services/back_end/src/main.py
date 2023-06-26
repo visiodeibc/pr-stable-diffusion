@@ -3,6 +3,7 @@ from io import BytesIO
 from fastapi import FastAPI, Response, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 
+import torch
 from diffusers import StableDiffusionImageVariationPipeline
 from PIL import Image
 from torchvision import transforms
@@ -19,12 +20,13 @@ app.add_middleware(
 )
 
 # init model
-device = "mps"
+device = "mps" if torch.backends.mps.is_available() else "cpu"
 sd_pipe = StableDiffusionImageVariationPipeline.from_pretrained(
     "lambdalabs/sd-image-variations-diffusers",
     revision="v2.0",
 )
 sd_pipe = sd_pipe.to(device)
+
 tform = transforms.Compose(
     [
         transforms.ToTensor(),
