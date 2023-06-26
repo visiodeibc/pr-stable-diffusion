@@ -14,11 +14,6 @@ import {
   Typography,
 } from "@mui/material";
 
-type IMAGE = {
-  url: string;
-  img: File;
-};
-
 export default function Home() {
   const [prompt, setPrompt] = useState<string | null>();
   const [processedImg, setProcessedImg] = useState<string | null>();
