@@ -1,7 +1,7 @@
 FROM node:18-alpine
 WORKDIR /app
 COPY . .
-RUN  yarn 
+# RUN  yarn 
 
 # FROM node:18-alpine AS builder
 # WORKDIR /app

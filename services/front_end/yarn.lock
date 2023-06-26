@@ -1218,6 +1218,11 @@
   resolved "https://registry.yarnpkg.com/@fontsource/roboto/-/roboto-5.0.3.tgz#bff6ce627b8c537e8f56e6f2bba221f425bfdf78"
   integrity sha512-jbZDFwEFARDlo8TqG7th/xjhuq87GYfFpFb+uxuy+0Ng1bhRVgBRWlLj8+WIKhCTOr+h4QXbjpybLWFLUirOwQ==
 
+"@huggingface/inference@^2.5.2":
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/@huggingface/inference/-/inference-2.5.2.tgz#3fbe8c8b3a623e500f2c65d49a8ef8f01615eff3"
+  integrity sha512-v2f4mRgumisTOkelYPCZQRBzh5K0l2vexH8b88CevWv+KgzeC0oPeQhDiSNisCpE6hK+UC6KQ/FxF265kcd6FA==
+
 "@humanwhocodes/config-array@^0.11.10":
   version "0.11.10"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.10.tgz#5a3ffe32cc9306365fb3fd572596cd602d5e12d2"
